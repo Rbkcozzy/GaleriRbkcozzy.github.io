@@ -1,0 +1,311 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* css reset end */
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    zoom: 1;
+}
+
+/* Clearfix end here */
+
+@font-face {
+    font-family: 'Courier prime bold';
+    src: url(Font/courier_prime_bold-webfont.woff) format('woff');
+}
+
+body {
+    font-family: 'Courier prime bold', Courier, monospace;
+    background-color: #acacac;
+}    
+h1{
+    font-size: 60px;
+    text-align: center;
+    margin-top: 30px;
+   text-shadow: 5px 2px 8px rgba(0, 0, 0, 0.7), 
+                4px 3px 0 black;
+    color: white;
+    
+}
+
+.container {
+    width: 755px;
+    height: 120px;
+    margin: 60px auto;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.6);
+    background-color: white;
+    padding-left: 80px;
+    position: relative;
+}
+.galeri li,
+.galeri li img,
+.galeri li span {
+    border-radius: 50%;
+}
+.galeri li span {
+    color: rgb(0, 0, 0);
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.877);
+    position:absolute;
+    top: 0;
+    line-height: 120px;
+    text-align: center;
+    opacity: 0;
+    transition: 0.3s all ease-in-out;
+    animation: tulisan2 0.5s alternate;
+    font: 0;
+}
+
+.galeri li {
+    width: 120px;
+    height: 120px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    /* overflow: hidden; */
+    border: 4px solid #000000;
+    margin-right: 60px;
+}
+
+@keyframes tulisan {
+    0% {
+        opacity: 0;
+    font-size: 0%;
+line-height: 120px;}
+
+    100% {
+        opacity: 1;
+     font-size: 100%;
+     line-height: 120px;
+    }
+
+}
+
+@keyframes tulisan2 {
+    0% {
+      opacity: 1;
+    font-size: 100%;
+line-height: 120px;
+    }
+
+    100% {
+        opacity: 0;
+     font-size: 0%;
+     line-height: 120px;
+    }
+}
+.galeri li a:hover span {
+    opacity: 1;
+    transition: 0.32s all ease-in-out;
+    animation: tulisan 0.5s ;
+    font-size: 17px;
+}
+
+/* overlay */
+
+.overlay {
+    width: 0;
+    height: 0;
+    overflow : hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 9999;
+    transition: 1s all;
+}
+
+.overlay:target {
+    width: auto;
+    height: auto;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* gambar overlay */
+.overlay .full {
+    width: 400px;
+    position: relative;
+    top: 30px;
+    left: 120px;
+    box-shadow: 0 0 20px black;
+    border: 4px solid white;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+.overlay:target .full {
+ animation: full 2.4s 0.8s forwards;
+}
+
+@keyframes full {
+
+    0% {
+        opacity: 0.25;
+        transform: rotatey(90deg);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: rotatey(60deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotatey(0);
+    }
+}
+
+.overlay .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 16px;
+    padding: 6px;
+    color: #000000;
+    font-family: cursive;
+    font-size: 24px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+/* Close button */
+.overlay:target .close {
+    animation: close 0.8s 2s forwards;
+}
+
+@keyframes close {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* overlay paragraph */
+.overlay p {
+    font-size: 15px;
+    width: 528px;
+    position: absolute;
+    top: 230px;
+    left: 632px;
+    color: #ffffff;
+   background-color: #0a080842;
+    box-shadow: 0 0 24px #0000008c;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+.overlay:target p {
+    animation: close 0.8s 2s forwards;
+}
+
+/* Button next and previus navigation */
+.prev {
+    width: 85px;
+    height: 85px;
+ position: absolute;
+    top: 230px;
+    left: 28px;
+ z-index: 9999;
+ background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    
+}
+
+.next{
+     width: 85px;
+    height: 85px;
+ position: absolute;
+    top: 231px;
+    left: 535px;
+ z-index: 9999;
+ background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.overlay:target .next {
+    animation: button 2s 2.7s forwards;
+}
+
+.overlay:target .prev {
+    animation: button 2s 2.7s forwards;
+}
+@keyframes button{
+     0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
